@@ -5,13 +5,12 @@ public class Main {
     public static void main(String[] args) {  
         Scanner scan = new Scanner(System.in);
         Random random = new Random();
-    
         System.out.print("Enter the size of the array: ");
-        int arraySize = scan.nextInt();
 
-        int[] array = new int[arraySize];
-        //Filling array with randomly generated values [0, 100]
-        for (int i = 0; i < arraySize; i++) {
+        int arraySize = scan.nextInt();
+        int[] array = new int[arraySize];               //creating array of user specified length
+       
+        for (int i = 0; i < arraySize; i++) {            //Filling array with randomly generated values [0, 100]
             array[i] = random.nextInt(101);
         }
         if (arraySize < 1) {
@@ -20,11 +19,13 @@ public class Main {
         else {
             boolean run = true;
             scan.nextLine();      //consuming the next line character
-
+            displayArray(array);
+    
             while (run) {
                 displayMenu();
                 System.out.print("Option to choose: ");           
                 String option = scan.next();
+                System.out.println();
 
                 switch (option) {
                     case "a":
@@ -34,7 +35,8 @@ public class Main {
                         //CALL MAXIMUM  CLASS/METHOD
                         break;
                     case "c":
-                        //CALL AVERAGE CLASS/METHOD (ZAEEM)
+                        Average average = new Average(array);
+                        average.displayDiffArray();
                         break;
                     case "d":
                         //CALL ODD INDEX SUM CLASS/METHOD
@@ -55,23 +57,28 @@ public class Main {
 
         }
     }
-
     /**
      * Displays menu options to the user
      */
     public static void displayMenu() {
-        System.out.println("a. Find minimum of the array.\nb. Find maximum of the array.");
+        System.out.println("\na. Find minimum of the array.\nb. Find maximum of the array.");
         System.out.println("c. Find the average of the array.\nd. Find sum of odd index.");
         System.out.println("e. Find sum of even index.\nf. Exit.");
     }
-  
     /**
      * Displays an array
      * @param err takes an array
      */
     public static void displayArray(int[] err) {
-        for (int i : err) {
-            System.out.print(i + ", ");
+        System.out.print("The randomly generated array of size " + err.length + " is:\n{" );
+
+        for (int i = 0; i < err.length; i++) {
+            System.out.print(err[i]);
+
+            if (i < err.length - 1 ) {
+                System.out.print(", ");
+            }
         }
+        System.out.println("}");
     }
 }

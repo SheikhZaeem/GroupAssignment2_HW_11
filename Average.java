@@ -13,7 +13,6 @@ public class Average {
         this.diffArray= new int[ array.length];
         //Calling our methods
         System.out.println("The average of the array is " + averageOfArray( array));
-        
         averageDifference( array);
     }
     /**
