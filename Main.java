@@ -29,12 +29,10 @@ public class Main {
 
                 switch (option) {
                     case "a":
-                        int min = minimumOfArray(array);
-                        System.out.println("Minimum value of the array is " + min);
+                        System.out.println("Minimum in the array: " + getMinimum(array));
                         break;
                     case "b":
-                        int max = maximumOfArray(array);
-                        System.out.println("Maximum value of the array is " + max);
+                        System.out.println("Maximum in the aray: " + getMaximum(array));
                         break;
                     case "c":
                         Average average = new Average(array);
@@ -85,31 +83,6 @@ public class Main {
         System.out.println("}");
     }
 
-    public static int maximumOfArray(int [] input)
-    {
-        int j = Integer.MIN_VALUE;
-        for (int i = 0; i < input.length; i++)
-        {
-            if (input[i] > j)
-            {
-                j = input[i];
-            }
-        }
-        return j;
-    }
-
-    public static int minimumOfArray(int [] input)
-    {
-        int j = Integer.MAX_VALUE;
-        for (int i = 0; i < input.length; i++)
-        {
-            if (input[i] < j)
-            {
-                j = input[i];
-            }
-        }
-        return j;
-    }
 
     private static int everyOtherIndex(int [] input, int index)
     {
@@ -131,5 +104,24 @@ public class Main {
     {
         int index = 0;
         return everyOtherIndex(input, index);
+    }
+
+    public static int getMinimum(int[] array){
+        int temp = array[0];
+        for(int i = array.length-1; i>0; i--){
+            if(array[i]<temp){
+                temp = array[i];
+            }
+        }
+        return temp;
+    }
+    public static int getMaximum(int[] array){
+        int temp = array[0];
+        for(int i = array.length-1; i>0; i--){
+            if(array[i]>temp){
+                temp = array[i];
+            }
+        }
+        return temp;
     }
 }
