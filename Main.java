@@ -29,20 +29,24 @@ public class Main {
 
                 switch (option) {
                     case "a":
-                        //CALL MINIMUM CLASS/METHOD
+                        int min = minimumOfArray(array);
+                        System.out.println("Minimum value of the array is " + min);
                         break;
                     case "b":
-                        //CALL MAXIMUM  CLASS/METHOD
+                        int max = maximumOfArray(array);
+                        System.out.println("Maximum value of the array is " + max);
                         break;
                     case "c":
                         Average average = new Average(array);
                         average.displayDiffArray();
                         break;
                     case "d":
-                        //CALL ODD INDEX SUM CLASS/METHOD
+                        int oddSum = sumOfOddIndexes(array);
+                        System.out.println("Sum of odd indexed numbers is " + oddSum);
                         break;
                     case "e":
-                        //CALL EVEN INDEX SUM CLASS/METHOD
+                        int evenSum = sumOfEvenIndexes(array);
+                        System.out.println("Sum of even indexed numbers is " + evenSum);
                         break;
                     case "f":
                         System.out.print("Exiting the game!");
@@ -50,7 +54,6 @@ public class Main {
                         break;
                     default:
                         System.out.println("Sorry, wrong input. Try again.");
-                        
                         break;
                 }
             }
@@ -80,5 +83,53 @@ public class Main {
             }
         }
         System.out.println("}");
+    }
+
+    public static int maximumOfArray(int [] input)
+    {
+        int j = Integer.MIN_VALUE;
+        for (int i = 0; i < input.length; i++)
+        {
+            if (input[i] > j)
+            {
+                j = input[i];
+            }
+        }
+        return j;
+    }
+
+    public static int minimumOfArray(int [] input)
+    {
+        int j = Integer.MAX_VALUE;
+        for (int i = 0; i < input.length; i++)
+        {
+            if (input[i] < j)
+            {
+                j = input[i];
+            }
+        }
+        return j;
+    }
+
+    private static int everyOtherIndex(int [] input, int index)
+    {
+        int sum = 0;
+        for(int i = index; i < input.length; i = i + 2)
+        {
+            sum += input[i];
+        }
+        return sum;
+    }
+
+    public static int sumOfOddIndexes(int [] input)
+    {
+        int index = 1;
+        return everyOtherIndex(input, index);   
+    }
+
+    public static int sumOfEvenIndexes(int [] input)
+    {
+        int index = 0;
+        return everyOtherIndex(input, index);
     }
 }
