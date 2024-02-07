@@ -30,9 +30,11 @@ public class Main {
                 switch (option) {
                     case "a":
                         //CALL MINIMUM CLASS/METHOD
+                        System.out.println("Minimum in the array: " + getMinimum(array));
                         break;
                     case "b":
                         //CALL MAXIMUM  CLASS/METHOD
+                        System.out.println("Maximum in the aray: " + getMaximum(array));
                         break;
                     case "c":
                         Average average = new Average(array);
@@ -80,5 +82,23 @@ public class Main {
             }
         }
         System.out.println("}");
+    }
+    public static int getMinimum(int[] array){
+        int temp = array[0];
+        for(int i = array.length-1; i>0; i--){
+            if(array[i]<temp){
+                temp = array[i];
+            }
+        }
+        return temp;
+    }
+    public static int getMaximum(int[] array){
+        int temp = array[0];
+        for(int i = array.length-1; i>0; i--){
+            if(array[i]>temp){
+                temp = array[i];
+            }
+        }
+        return temp;
     }
 }
